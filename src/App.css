@@ -1,0 +1,10 @@
+/* Basic App styling for dark portfolio theme */
+.App {
+  min-height: 100vh;
+  background-color: #0d0d0d;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
