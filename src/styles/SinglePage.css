@@ -494,6 +494,9 @@ footer {
 body.bg-light footer {
   color: #444;
 }
+/* =========================================================
+   SinglePage.css – Updated Mobile View (150x150 Image)
+   ========================================================= */
 
 /* -------------------------
    Mobile Header + Menu
@@ -524,6 +527,11 @@ body.bg-light footer {
   color: #00ffc3;
   font-size: 1.8rem;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
 }
 
 .mobile-menu {
@@ -542,12 +550,13 @@ body.bg-light footer {
   align-items: center;
   gap: 1.25rem;
   box-shadow: -6px 0 30px rgba(0, 0, 0, 0.6);
+  overflow-y: auto;
 }
 
 body.bg-light .mobile-menu {
   background-color: #ffffff;
   color: #111;
-  box-shadow: -6px 0 30px rgba(16,24,40,0.04);
+  box-shadow: -6px 0 30px rgba(16, 24, 40, 0.04);
 }
 
 .mobile-menu ul {
@@ -612,15 +621,20 @@ body.bg-light .mobile-menu {
 }
 
 /* -------------------------
-   Responsive
+   Responsive (Mobile Fix)
    ------------------------- */
 @media (max-width: 992px) {
+  /* Hide desktop sidebar */
   .desktop-sidebar {
     display: none;
   }
+
+  /* Resume button width fix */
   .resume-btn {
     width: 250px;
   }
+
+  /* Fixed mobile header */
   .mobile-header {
     display: block;
     position: fixed;
@@ -639,27 +653,171 @@ body.bg-light .mobile-menu {
 
   .mobile-header-inner {
     padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
+  /* Enlarged Profile photo in header (✅ Updated) */
   .mobile-photo img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 2px solid #00ffc3;
+    object-fit: cover;
   }
 
+  /* Menu icon */
   .menu-toggle {
-    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: #00ffc3;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
   }
 
+  .menu-toggle:hover {
+    transform: scale(1.1);
+  }
+
+  /* Main content below header */
   .main-container {
     margin-left: 0;
     width: 100%;
-    padding-top: 88px;
+    padding-top: 80px; /* matches header height */
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+
+  /* Section padding adjustment */
+  section {
+    padding: 2rem 0;
+  }
+
+  /* Headings resize */
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  /* Grid reflow */
+  .skills-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* Contact form spacing */
+  .contact-form {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 75%;
+    max-width: 420px;
+    background-color: #0b0b0b;
+    color: #fff;
+    z-index: 2000;
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    box-shadow: -6px 0 30px rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+  }
+
+  body.bg-light .mobile-menu {
+    background-color: #ffffff;
+    color: #111;
+    box-shadow: -6px 0 30px rgba(16, 24, 40, 0.04);
+  }
+
+  /* Mobile menu links */
+  .mobile-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .mobile-menu ul li {
+    margin: 18px 0;
+  }
+
+  .mobile-menu a {
+    color: #00ffc3;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: inline-block;
+  }
+
+  .mobile-menu a:hover {
+    color: #00d6a8;
+  }
+
+  /* Mobile menu footer (buttons) */
+  .mobile-menu-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+  }
+
+  .mobile-menu .resume-btn.download {
+    display: none !important;
+  }
+
+  .mobile-menu .mode-toggle {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background-color: #00ffc3;
+    color: #000;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 22px;
+    margin: 0 auto;
+    width: fit-content;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu .mode-toggle:hover {
+    transform: scale(1.05);
+    background-color: #00e6ad;
   }
 }
 
-@media (min-width: 993px) {
-  .mobile-header,
-  .mobile-menu {
-    display: none;
-  }
+/* 🧭 Stability Fixes */
+body.menu-open {
+  overflow: hidden;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
